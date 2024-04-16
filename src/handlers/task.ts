@@ -8,4 +8,9 @@ export class TaskHandler {
     const tasks = await this.taskRepository.listTasks();
     res.status(200).json(tasks);
   }
+
+  async createTask(req: Request, res: Response): Promise<void> {
+    const task = await this.taskRepository.createTask(req.body);
+    res.status(201).json(task);
+  }
 }
