@@ -1,5 +1,6 @@
 import { Pool } from "pg";
 import { CreateTaskDto, Task } from "../domains/task";
+import { UUID } from "crypto";
 
 export class TaskRepository {
   constructor(private readonly db: Pool) {}
@@ -12,7 +13,7 @@ export class TaskRepository {
 
   async createTask(task: CreateTaskDto): Promise<Task> {
     const { rows } = await this.db.query<Task>(
-      "INSERT INTO tasks (id, title) VALUES (gen_random_uuid(), $1) RETURNING *",
+      "INSERT INTO tasks (title) VALUES ($1) RETURNING *",
       [task.title]
     );
 
