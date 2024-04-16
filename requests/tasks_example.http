@@ -1,0 +1,27 @@
+### Variables 
+@apiurl = http://localhost:8080/api
+
+### GET tasks
+GET {{apiurl}}/tasks HTTP/1.1
+
+### POST tasks - create
+POST {{apiurl}}/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+   "title": "New task"
+}
+
+### GET - task by id
+GET {{apiurl}}/tasks/4666ccd1-d745-44fb-b7b3-bbc50e472c43 HTTP/1.1
+
+### REMOVE - task by id
+DELETE {{apiurl}}/tasks/287dab37-b96f-455b-9ba5-bea78f285030 HTTP/1.1
+
+### UPDATE - task by id
+PATCH {{apiurl}}/tasks/d1af6d9d-46b7-47c7-afaf-c86dead721a7
+Content-Type: application/json
+
+{
+   "title": "Another taskName"
+}
