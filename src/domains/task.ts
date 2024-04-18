@@ -1,5 +1,7 @@
+import { UUID } from "crypto";
+
 export interface Task {
-    id: number;
+    id: UUID;
     title: string;
     isDone: boolean;
     created_at: Date;
@@ -9,4 +11,8 @@ export interface Task {
 
 export interface CreateTaskDto {
     title: string;
+}
+
+export interface UpdateTaskDto {
+    title?: string
 }
