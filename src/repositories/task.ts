@@ -1,6 +1,5 @@
 import { Pool } from "pg";
 import { CreateTaskDto, Task } from "../domains/task";
-import { UUID } from "crypto";
 
 export class TaskRepository {
   constructor(private readonly db: Pool) {}
