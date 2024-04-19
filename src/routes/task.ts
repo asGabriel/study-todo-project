@@ -10,5 +10,8 @@ const taskHandler = new TaskHandler(taskRepository);
 taskRouter
     .get('/tasks', (req: Request, res: Response) => taskHandler.listTasks(req, res))
     .post('/tasks', (req: Request, res: Response) => taskHandler.createTask(req, res))
+    .get('/tasks/:id', (req: Request, res: Response) => taskHandler.getTaskById(req, res))
+    .patch('/tasks/:id', (req: Request, res: Response) => taskHandler.updateTaskById(req, res))
+    .delete('/tasks/:id', (req: Request, res: Response) => taskHandler.removeTaskById(req, res))
 
 export default taskRouter;
