@@ -21,13 +21,18 @@ export class TaskHandler {
   }
 
   async removeTaskById(req: Request, res: Response): Promise<void> {
-    const task = await this.taskRepository.removeTaskById(req.params.id as UUID);
-    res.status(200).json(task);
+    const task = this.taskRepository.getTaskById(req.params.id as UUID);
+    if (!task) res.status(401).send("Task not found");
+
+    const removed_task = await this.taskRepository.removeTaskById(
+      req.params.id as UUID
+    );
+    res.status(200).json(removed_task);
   }
 
   async updateTaskById(req: Request, res: Response): Promise<void> {
-    const task = this.taskRepository.getTaskById(req.params.id as UUID);
-    if (!task) throw new Error("Task not found");
+    const task = await this.taskRepository.getTaskById(req.params.id as UUID);
+    if (!task) res.status(401).send("Task not found");
 
     const updated_task = await this.taskRepository.updateTaskById(
       req.params.id as UUID,

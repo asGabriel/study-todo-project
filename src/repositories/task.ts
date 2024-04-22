@@ -1,6 +1,5 @@
 import { Pool } from "pg";
 import { CreateTaskDto, Task, UpdateTaskDto } from "../domains/task";
-import { query } from "express";
 import { UUID } from "crypto";
 
 export class TaskRepository {
@@ -34,7 +33,7 @@ export class TaskRepository {
 
   async removeTaskById(taskId: UUID): Promise<Task> {
     const { rows } = await this.db.query<Task>(
-      "UPDATE TASKS SET DELETED_AT=NOW() WHERE ID=$1 RETURNING *",
+      "UPDATE TASKS SET DELETED_AT=NOW() WHERE ID=$1 WHERE DELETED_AT IS NULL RETURNING *",
       [taskId]
     );
 
@@ -43,7 +42,7 @@ export class TaskRepository {
 
   async updateTaskById(taskId: UUID, task: UpdateTaskDto): Promise<Task> {
     const { rows } = await this.db.query<Task>(
-      "UPDATE TASKS SET TITLE=COALESCE($1, TITLE) WHERE ID=$2 RETURNING *",
+      "UPDATE TASKS SET TITLE=$1 WHERE ID=$2 WHERE DELETED_AT IS NULL RETURNING *",
       [task.title, taskId]
     );
 
