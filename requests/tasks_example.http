@@ -19,7 +19,7 @@ GET {{apiurl}}/tasks/cd123cf7-0f47-4235-9925-dbc839efedf7 HTTP/1.1
 DELETE {{apiurl}}/tasks/cd123cf7-0f47-4235-9925-dbc839efedf7 HTTP/1.1
 
 ### UPDATE - task by id
-PATCH {{apiurl}}/tasks/fcdbbad4-05b8-453c-99e3-5619f363d804
+PATCH {{apiurl}}/tasks/fcdbbad4-05b8-453c-99e3-5619f363d805
 Content-Type: application/json
 
 {
