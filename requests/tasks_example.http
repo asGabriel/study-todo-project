@@ -19,9 +19,9 @@ GET {{apiurl}}/tasks/cd123cf7-0f47-4235-9925-dbc839efedf7 HTTP/1.1
 DELETE {{apiurl}}/tasks/cd123cf7-0f47-4235-9925-dbc839efedf7 HTTP/1.1
 
 ### UPDATE - task by id
-PATCH {{apiurl}}/tasks/fcdbbad4-05b8-453c-99e3-5619f363d805
+PATCH {{apiurl}}/tasks/87810ea5-0cc6-4865-931f-933b93fb27cf HTTP/1.1
 Content-Type: application/json
 
 {
-   "title": "Do the dishes"
+   "title": "Validade body"
 }
