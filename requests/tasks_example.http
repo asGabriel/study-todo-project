@@ -23,5 +23,6 @@ PATCH {{apiurl}}/tasks/87810ea5-0cc6-4865-931f-933b93fb27cf HTTP/1.1
 Content-Type: application/json
 
 {
-   "title": "Validade body"
+   "title": "Validade body",
+   "isDone": true
 }

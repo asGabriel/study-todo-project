@@ -42,8 +42,8 @@ export class TaskRepository {
 
   async updateTaskById(taskId: UUID, task: UpdateTaskDto): Promise<Task> {
     const { rows } = await this.db.query<Task>(
-      "UPDATE TASKS SET TITLE=$1 WHERE ID=$2 AND DELETED_AT IS NULL RETURNING *",
-      [task.title, taskId]
+      "UPDATE TASKS SET TITLE=$1, ISDONE=$2 WHERE ID=$3 AND DELETED_AT IS NULL RETURNING *",
+      [task.title, task.isDone, taskId]
     );
 
     return rows[0];

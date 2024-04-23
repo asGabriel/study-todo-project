@@ -17,27 +17,37 @@ export class TaskHandler {
 
   async getTaskById(req: Request, res: Response): Promise<void> {
     const task = await this.taskRepository.getTaskById(req.params.id as UUID);
-    res.status(201).json(task);
+    if (!task) {
+      res.status(404).send("Task not found");
+      return;
+    }
+
+    res.status(200).json(task);
   }
 
   async removeTaskById(req: Request, res: Response): Promise<void> {
-    const task = this.taskRepository.getTaskById(req.params.id as UUID);
-    if (!task) res.status(404).send("Task not found");
+    await this.taskRepository.getTaskById(req.params.id as UUID);
 
     const removed_task = await this.taskRepository.removeTaskById(
       req.params.id as UUID
     );
+
     res.status(200).json(removed_task);
   }
 
   async updateTaskById(req: Request, res: Response): Promise<void> {
     const task = await this.taskRepository.getTaskById(req.params.id as UUID);
-    if (!task) res.status(404).send("Task not found");
+
+    if (task.isDone === req.body.isDone) {
+      res.status(400).send("Invalid status");
+      return;
+    }
 
     const updated_task = await this.taskRepository.updateTaskById(
       req.params.id as UUID,
       req.body
     );
+
     res.status(200).json(updated_task);
   }
 }
