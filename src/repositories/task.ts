@@ -33,7 +33,7 @@ export class TaskRepository {
 
   async removeTaskById(taskId: UUID): Promise<Task> {
     const { rows } = await this.db.query<Task>(
-      "UPDATE TASKS SET DELETED_AT=NOW() WHERE ID=$1 WHERE DELETED_AT IS NULL RETURNING *",
+      "UPDATE TASKS SET DELETED_AT=NOW() WHERE ID=$1 AND DELETED_AT IS NULL RETURNING *",
       [taskId]
     );
 
@@ -42,7 +42,7 @@ export class TaskRepository {
 
   async updateTaskById(taskId: UUID, task: UpdateTaskDto): Promise<Task> {
     const { rows } = await this.db.query<Task>(
-      "UPDATE TASKS SET TITLE=$1 WHERE ID=$2 WHERE DELETED_AT IS NULL RETURNING *",
+      "UPDATE TASKS SET TITLE=$1 WHERE ID=$2 AND DELETED_AT IS NULL RETURNING *",
       [task.title, taskId]
     );
 
