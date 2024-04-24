@@ -39,7 +39,7 @@ export class TaskHandler {
     const task = await this.taskRepository.getTaskById(req.params.id as UUID);
 
     if (task.isDone === req.body.isDone) {
-      res.status(400).send("Invalid status");
+      res.status(400).send("Unable to send the same current task status");
       return;
     }
 
