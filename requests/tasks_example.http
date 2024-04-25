@@ -9,11 +9,11 @@ POST {{apiurl}}/tasks HTTP/1.1
 Content-Type: application/json
 
 {
-   "title": "Run in the morning"
+   "title": "asd"
 }
 
 ### GET - task by id
-GET {{apiurl}}/tasks/cd123cf7-0f47-4235-9925-dbc839efedf7 HTTP/1.1
+GET {{apiurl}}/tasks/fcdbbad4-05b8-453c-99e3-5619f363d804 HTTP/1.1
 
 ### REMOVE - task by id
 DELETE {{apiurl}}/tasks/cd123cf7-0f47-4235-9925-dbc839efedf7 HTTP/1.1
@@ -23,6 +23,6 @@ PATCH {{apiurl}}/tasks/87810ea5-0cc6-4865-931f-933b93fb27cf HTTP/1.1
 Content-Type: application/json
 
 {
-   "title": "Validade body",
-   "isDone": true
+   "title": "Validade body"
 }
+
