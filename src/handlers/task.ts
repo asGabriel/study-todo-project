@@ -38,7 +38,7 @@ export class TaskHandler {
   async updateTaskById(req: Request, res: Response): Promise<void> {
     const task = await this.taskRepository.getTaskById(req.params.id as UUID);
 
-    if (task.isDone === req.body.isDone) {
+    if ((task.isDone === req.body.isDone) && task.isDone) {
       res.status(400).send("Unable to send the same current task status");
       return;
     }

@@ -16,3 +16,12 @@ export interface CreateTaskDto {
 export interface UpdateTaskDto extends Partial<CreateTaskDto> {
   isDone?: boolean
 }
+
+export const mockCreateTaskDto: CreateTaskDto = {
+  title: "mock"
+}
+
+export const mockUpdateTaskDto: UpdateTaskDto = {
+  title: "mock",
+  isDone: true
+}
